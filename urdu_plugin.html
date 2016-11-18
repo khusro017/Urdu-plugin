@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Urdu editor</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="lib.js"></script>
+</head>
+
+<body>
+<script>
+function chk(obj,tid, kid)
+{
+	//console.log(obj);
+	if($("#"+obj.id).is(':checked'))
+	{
+		$('#'+tid).show();
+		$('#'+tid).addUrduEditor(
+		{
+			"method":"onclick",
+			"style":"font-size:18px;direction: rtl;unicode-bidi: isolate; padding:5px;font-family: Verdana, Geneva, sans-serif;    font-size: 12pt;    font-weight: bold;    border: 1px solid SkyBlue;    background-color: #FFFFFF;    width: 600;    height: 300;",
+			"keyboard": true,
+			"keyboard_div":kid
+		});
+	}
+	else
+	{
+		$('#'+tid).hide();
+		$('#'+tid).removeUrduEditor();
+	}	
+}
+</script>
+<input type="checkbox" onclick="chk(this,'txt1', 'keyboard1')" id="chk1" class="">Need urdu1<br>
+<textarea id="txt1" cols="50" rows="10" style="display:none"></textarea>
+<div id="keyboard1"></div>
+<br><input type="checkbox" onclick="chk(this,'txt2','keyboard2')" id="chk2">Need urdu2<br>
+<textarea id="txt2" cols="50" rows="10" style="display:none"></textarea>
+<div id="keyboard2"></div>
+<br><input type="checkbox" onclick="chk(this,'txt3','keyboard3')" id="chk3">Need urdu3<br>
+<textarea id="txt3" cols="50" rows="10" style="display:none"></textarea>
+<div id="keyboard3"></div>
+</body>
+</html>
